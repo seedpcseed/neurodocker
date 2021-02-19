@@ -1,0 +1,2518 @@
+Build Results
+=============
+
+The table below lists the build results for the templates included in Neurodocker.
+These builds are parameterized over many variables, including version, package manager,
+base image, builder (Docker or Singularity), and installation method (binaries or
+source).
+
+| 🟢 = passed
+| 🔴 = failed
+| 🟡 = other
+
+.. list-table:: Build results
+   :header-rows: 1
+
+   * - outcome
+     - template
+     - method
+     - arguments
+     - package manager
+     - base image
+     - builder
+   * - 🟢
+     - _header
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - _header
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - _header
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - _header
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - afni
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - afni
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - afni
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - afni
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - afni
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - afni
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - afni
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - afni
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.3"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.3"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.3"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.0.3"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.1.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.1.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.1.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.1.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.2.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.2.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.2.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.2.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.1"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.1"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.1"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.1"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.2"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.2"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.2"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.2"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.4"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.4"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.4"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - binaries
+     - | method="binaries"
+       | version="2.3.4"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ants
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ants
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ants
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ants
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="nightly"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="nightly"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="nightly"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - convert3d
+     - binaries
+     - | method="binaries"
+       | version="nightly"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - dcm2niix
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - dcm2niix
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20190902"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20190902"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20190902"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20190902"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20200331"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20200331"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20200331"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20200331"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20201102"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20201102"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20201102"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - dcm2niix
+     - binaries
+     - | method="binaries"
+       | version="v1.0.20201102"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0-min"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0-min"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0-min"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.0-min"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1-min"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1-min"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1-min"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - freesurfer
+     - binaries
+     - | method="binaries"
+       | version="7.1.1-min"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.10"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.10"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.10"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.10"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.11"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.11"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.11"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.11"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.8"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.8"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.8"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.8"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.9"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.9"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.9"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="5.0.9"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.1"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.2"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.2"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.2"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.2"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.3"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.3"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.3"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.3"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.4"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.4"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.4"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - fsl
+     - binaries
+     - | method="binaries"
+       | version="6.0.4"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.5"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.5"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.5"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.5"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.6"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.6"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.6"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - jq
+     - binaries
+     - | method="binaries"
+       | version="1.6"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - jq
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - jq
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - jq
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - jq
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - minc
+     - binaries
+     - | method="binaries"
+       | version="1.9.15"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - minc
+     - binaries
+     - | method="binaries"
+       | version="1.9.15"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - minc
+     - binaries
+     - | method="binaries"
+       | version="1.9.15"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - minc
+     - binaries
+     - | method="binaries"
+       | version="1.9.15"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="*"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="*"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="*"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="*"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - miniconda
+     - binaries
+     - | method="binaries"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20171220"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20171220"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20171220"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20171220"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180404"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180404"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180404"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180404"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180614"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180614"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180614"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20180614"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20181114"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20181114"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20181114"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20181114"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190410"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190410"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190410"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190410"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190902"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190902"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190902"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - mricron
+     - binaries
+     - | method="binaries"
+       | version="1.0.20190902"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.1"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.1"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.1"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.1"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.2"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.2"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.2"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - mrtrix3
+     - binaries
+     - | method="binaries"
+       | version="3.0.2"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - mrtrix3
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - mrtrix3
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - mrtrix3
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - mrtrix3
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - ndfreeze
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - ndfreeze
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - ndfreeze
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - ndfreeze
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="australia"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="australia"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="australia"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="australia"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-scitech"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-scitech"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-scitech"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-scitech"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-tsinghua"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-tsinghua"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-tsinghua"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-tsinghua"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-zhejiang"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-zhejiang"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-zhejiang"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="china-zhejiang"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-magdeburg"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-magdeburg"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-magdeburg"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-magdeburg"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-munich"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-munich"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-munich"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="germany-munich"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="greece"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="greece"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="greece"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="greece"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="japan"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="japan"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="japan"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="japan"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-ca"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-ca"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-ca"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-ca"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-nh"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-nh"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-nh"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-nh"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-tn"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-tn"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-tn"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - neurodebian
+     - binaries
+     - | method="binaries"
+       | version="usa-tn"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.0.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.1.0"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.1.0"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.1.0"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.1.0"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-a"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-a"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-a"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-a"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-b"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-b"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-b"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.0-b"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.1"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.1"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.1"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🔴
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.1"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.2"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.2"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.2"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.2"
+     - yum
+     - centos:7
+     - singularity
+   * - 🔴
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.4"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.4"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.4"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - petpvc
+     - binaries
+     - | method="binaries"
+       | version="1.2.4"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="dev"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="dev"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="dev"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="dev"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6225"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6225"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6225"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6225"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6472"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6472"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6472"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6472"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6685"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6685"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6685"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6685"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6914"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6914"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6914"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r6914"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7219"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7219"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7219"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7219"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7487"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7487"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7487"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7487"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7771"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🔴
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7771"
+     - yum
+     - centos:7
+     - docker
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7771"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - spm12
+     - binaries
+     - | method="binaries"
+       | version="r7771"
+     - yum
+     - centos:7
+     - singularity
+   * - 🟢
+     - vnc
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - docker
+   * - 🟢
+     - vnc
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - docker
+   * - 🔴
+     - vnc
+     - source
+     - | method="source"
+       | version="latest"
+     - apt
+     - debian:buster-slim
+     - singularity
+   * - 🟢
+     - vnc
+     - source
+     - | method="source"
+       | version="latest"
+     - yum
+     - centos:7
+     - singularity

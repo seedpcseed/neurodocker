@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>neurodocker.reproenv.state &#8212; Neurodocker  documentation</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../../index.html">
+    
+      <p class="title">Neurodocker</p>
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../user_guide.html">User Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../build_results.html">Build Results</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../api.html">API Reference</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for neurodocker.reproenv.state</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Stateful objects in reproenv runtime.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">ty</span>
+
+<span class="kn">import</span> <span class="nn">jsonschema</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+
+<span class="c1"># The [C]SafeLoader will only load a subset of YAML, but that is fine for the</span>
+<span class="c1"># purposes of this package.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">CSafeLoader</span> <span class="k">as</span> <span class="n">SafeLoader</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+    <span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">SafeLoader</span>  <span class="c1"># type: ignore  # pragma: no cover</span>
+
+<span class="kn">from</span> <span class="nn">neurodocker.reproenv.exceptions</span> <span class="kn">import</span> <span class="n">RendererError</span>
+<span class="kn">from</span> <span class="nn">neurodocker.reproenv.exceptions</span> <span class="kn">import</span> <span class="n">TemplateError</span>
+<span class="kn">from</span> <span class="nn">neurodocker.reproenv.exceptions</span> <span class="kn">import</span> <span class="n">TemplateNotFound</span>
+<span class="kn">from</span> <span class="nn">neurodocker.reproenv.types</span> <span class="kn">import</span> <span class="n">TemplateType</span>
+
+<span class="n">_schemas_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;schemas&quot;</span>
+
+<span class="k">with</span> <span class="p">(</span><span class="n">_schemas_path</span> <span class="o">/</span> <span class="s2">&quot;template.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">_TEMPLATE_SCHEMA</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="p">(</span><span class="n">_schemas_path</span> <span class="o">/</span> <span class="s2">&quot;renderer.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">_RENDERER_SCHEMA</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_validate_template</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="n">TemplateType</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Validate template against JSON schema. Raise exception if invalid.&quot;&quot;&quot;</span>
+    <span class="c1"># TODO: should reproenv have a custom exception for invalid templates? probably</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">jsonschema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">_TEMPLATE_SCHEMA</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">TemplateError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid template: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="c1"># TODO: Check that all variables in the instructions are listed in arguments.</span>
+    <span class="c1"># something like https://stackoverflow.com/a/8284419/5666087</span>
+    <span class="c1"># but that solution does not get attributes like foo in `self.foo`.</span>
+    <span class="c1"># For now, this is taken care of in Renderer classes, but it would be good to move</span>
+    <span class="c1"># that behavior here, so we can catch errors early.</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">_validate_renderer</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Validate renderer dictionary against JSON schema. Raise exception if invalid.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">jsonschema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">_RENDERER_SCHEMA</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">RendererError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid renderer dictionary: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+
+<span class="k">class</span> <span class="nc">_TemplateRegistry</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Object to hold templates in memory.&quot;&quot;&quot;</span>
+
+    <span class="n">_templates</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TemplateType</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_reset</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clear all templates.&quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_templates</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">path_or_template</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">TemplateType</span><span class="p">],</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TemplateType</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Register a template. This will overwrite an existing template with the</span>
+<span class="sd">        same name in the registry.</span>
+
+<span class="sd">        The template is validated against reproenv&#39;s template JSON schema upon</span>
+<span class="sd">        registration. An invalid template will raise an exception.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path_or_template : str, Path-like, or TemplateType</span>
+<span class="sd">            Path to YAML file that defines the template, or the dictionary that</span>
+<span class="sd">            represents the template.</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the template. This becomes the key to the template in the registry.</span>
+<span class="sd">            The name is made lower-case. If `path_or_template` is a path, then `name`</span>
+<span class="sd">            can be omitted and instead comes from `template[&quot;name&quot;]`. If</span>
+<span class="sd">            `path_or_template` is a `dict`, then `name` is required.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path_or_template</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`name` required when template is not a file&quot;</span><span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">template</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">path_or_template</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path_or_template</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_or_template</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path_or_template</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;template is not path to a file or a dictionary&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">path_or_template</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">template</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">SafeLoader</span><span class="p">)</span>
+
+        <span class="n">_validate_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">template</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+        <span class="c1"># Add the template name as an optional key to the renderer schema. This is</span>
+        <span class="c1"># so that the dictionary passed to the `Renderer.from_dict()` method can</span>
+        <span class="c1"># contain names of registered templates. These templates are not known when the</span>
+        <span class="c1"># renderer schema is created.</span>
+        <span class="c1"># However, this schema is lax because the kwds just has to be an object. Keys</span>
+        <span class="c1"># and values in kwds are validated in the renderer.</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;template_</span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">_RENDERER_SCHEMA</span><span class="p">[</span><span class="s2">&quot;definitions&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;kwds&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">name</span><span class="p">]},</span> <span class="s2">&quot;kwds&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">}},</span>
+            <span class="s2">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="c1"># Do not add template to `instructions` properties if it has already been added.</span>
+        <span class="n">template_ref</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;$ref&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;#/definitions/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        <span class="n">oneof</span> <span class="o">=</span> <span class="n">_RENDERER_SCHEMA</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;instructions&quot;</span><span class="p">][</span><span class="s2">&quot;items&quot;</span><span class="p">][</span><span class="s2">&quot;oneOf&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">template_ref</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">oneof</span><span class="p">:</span>
+            <span class="n">oneof</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">template_ref</span><span class="p">)</span>
+
+        <span class="c1"># Add template to registry.</span>
+        <span class="c1"># TODO: should we log a message if overwriting a key-value pair?</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_templates</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">=</span> <span class="n">template</span>
+        <span class="k">return</span> <span class="n">template</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TemplateType</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return a Template object from the registry given a template name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The name of the registered template.</span>
+
+<span class="sd">        If the template is not found, perhaps it was not added to the registry using</span>
+<span class="sd">        `register`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_templates</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">known</span> <span class="o">=</span> <span class="s2">&quot;&#39;, &#39;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_templates</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="n">TemplateNotFound</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Unknown template &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;. Registered templates are &#39;</span><span class="si">{</span><span class="n">known</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ty</span><span class="o">.</span><span class="n">KeysView</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return names of registered templates.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_templates</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ty</span><span class="o">.</span><span class="n">ItemsView</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TemplateType</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_templates</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+
+<span class="n">register_template</span> <span class="o">=</span> <span class="n">_TemplateRegistry</span><span class="o">.</span><span class="n">register</span>
+<span class="n">registered_templates</span> <span class="o">=</span> <span class="n">_TemplateRegistry</span><span class="o">.</span><span class="n">keys</span>
+<span class="n">registered_templates_items</span> <span class="o">=</span> <span class="n">_TemplateRegistry</span><span class="o">.</span><span class="n">items</span>
+<span class="n">get_template</span> <span class="o">=</span> <span class="n">_TemplateRegistry</span><span class="o">.</span><span class="n">get</span>
+</pre></div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2021, Neurodocker Developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
